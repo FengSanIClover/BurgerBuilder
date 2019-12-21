@@ -26,6 +26,7 @@ const builderControls = (props) => {
 
     return (
         <div className={classes.BuilderControls}>
+            <p>單錢價格:<strong>{props.price.toFixed(2)}</strong> </p>
             {
                 builderControls
             }

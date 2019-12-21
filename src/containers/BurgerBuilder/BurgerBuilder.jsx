@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Aux from "../../hoc/Auxiliary";
 import Burger from "../../components/Burger/Burger";
 import BuilderControls from "../../components/Burger/BuilderControls/BuilderControls"
+import Modal from "../../components/UI/Modal/Modal";
+import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary";
 
 /** 全域用得常數命名都為大寫 */
 const INGREDIENT_PRICE = {
@@ -112,6 +114,9 @@ class BurgerBuilder extends Component {
 
         return (
             <Aux>
+                <Modal>
+                    <OrderSummary ingredients={this.state.ingredients} />
+                </Modal>
                 <Burger ingredients={this.state.ingredients} />
                 <BuilderControls
                     addIngredientHandler={this.addIngredientHandler}

@@ -14,8 +14,13 @@ const burger = (props) => {
                     return <BurgerIngredient key={igKey + index} type={igKey} />
                 })
         })
+        .reduce((accumulator, currentValue, index, arrays) => {
+            return accumulator.concat(currentValue)
+        }, []) // 預設一個空陣列，會第一個傳入，後逐個陣列拆開加入，成一個陣列
 
-    // console.log(props.ingredients)
+    if (transformedIngredients.length === 0) {
+        transformedIngredients = <p className={classes.NotifyText}>請加入漢堡配料</p>
+    }
 
     // console.log(transformedIngredients)
 

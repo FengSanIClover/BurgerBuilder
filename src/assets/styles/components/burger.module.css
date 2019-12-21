@@ -8,6 +8,36 @@
     text-align: center;
 }
 
+.NotifyText {
+    /* animation: NotifyTextAni 5s ease-in-out infinite; */ 
+    animation-name: NotifyTextAni; /* 動畫名稱 */
+    animation-duration: 3s; /* 轉換時間 */
+    animation-timing-function: ease; /* 變換速率 */
+    animation-iteration-count: infinite; /* 次數，永久 */
+}
+
+@keyframes NotifyTextAni{
+    0% {
+        color: black;
+    }
+
+    25% {
+        color: lightcoral;
+    }
+
+    50% {
+        color: red;
+    }
+
+    75% {
+        color: lightcoral;
+    }
+
+    100% {
+        color: black;
+    }
+}
+
 @media (min-width:500px) and (min-height:400px) {
     .Burger {
         width: 350px;

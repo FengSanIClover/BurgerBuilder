@@ -20,7 +20,28 @@ class BurgerBuilder extends Component {
             cheese: 0,
             bacon: 0
         },
-        totalPrice: 4
+        totalPrice: 4,
+        purchasable: false
+    }
+
+    /** 更新是否可以購買的狀態 
+     * @param updateIngredient 更新狀態的值
+    */
+    updatePurchasable = (updateIngredient) => {
+        // const ingredients = {
+        //     ...this.state.ingredients
+        // }
+
+        const sum = Object.keys(updateIngredient)
+            .map(igkey => {
+                return updateIngredient[igkey]
+            })
+            .reduce((sum, current) => {
+                return sum + current;
+            }, 0)
+
+        this.setState({ purchasable: sum > 1 })
+
     }
 
     /** 新增 配料(salad、meat、cheese、bacon)數量及更新價錢 
@@ -47,7 +68,6 @@ class BurgerBuilder extends Component {
      * @param type 配料名稱
      * @param polarity 正負極性
      */
-
     getUpdateCount = (type, polarity) => {
         const oldCount = this.state.ingredients[type];
         return oldCount + (1 * polarity);
@@ -75,6 +95,9 @@ class BurgerBuilder extends Component {
             totalPrice: newCurrentPrice,
             ingredients: updateIngredient
         })
+
+        /** 更新是否可以購買 */
+        this.updatePurchasable(updateIngredient);
     }
 
     render() {
@@ -96,6 +119,7 @@ class BurgerBuilder extends Component {
                     disableInfos={disableInfos}
                     // ingredients={this.state.ingredients}
                     price={this.state.totalPrice}
+                    purchasable={this.state.purchasable}
                 />
             </Aux>
         )

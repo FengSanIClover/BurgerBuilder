@@ -21,6 +21,8 @@ const orderSummary = (props) => {
                     ingerdients
                 }
             </ul>
+            <button>CANCEL</button>
+            <button>CONTINUE</button>
         </Aux>
     )
 }

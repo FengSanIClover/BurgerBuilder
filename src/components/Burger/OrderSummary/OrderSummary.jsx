@@ -1,17 +1,17 @@
 import React, { Component } from "react";
-import Aux from "../../../hoc/Auxiliary";
+import Aux from "../../../hoc/Auxiliary/Auxiliary";
 import classes from "../../../assets/styles/components/ordersummary.module.css";
 import Button from "../../UI/Button/Button";
 
 class OrderSummary extends Component {
     // 使用 function component 就可以了，因為不需要使用到生命週期，此次僅為測試觀看用
-    componentWillUpdate() {
-        console.log(`[OrderSummary] Will Update`)
-    }
+    // componentWillUpdate() {
+    //     console.log(`[OrderSummary] Will Update`)
+    // }
 
-    componentDidUpdate() {
-        console.log(`[OrderSummary] Did Update`)
-    }
+    // componentDidUpdate() {
+    //     console.log(`[OrderSummary] Did Update`)
+    // }
 
     render() {
         const ingerdients = Object.keys(this.props.ingredients)

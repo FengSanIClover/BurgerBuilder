@@ -108,6 +108,11 @@ class BurgerBuilder extends Component {
         this.setState({ purchasing: true })
     }
 
+    /** 取消購買中的狀態 */
+    purchaseCancelHandler = () => {
+        this.setState({ purchasing: false })
+    }
+
     render() {
         /** 判斷減少各種配料的按鈕是否要 disable */
         const disableInfos = {
@@ -120,7 +125,7 @@ class BurgerBuilder extends Component {
 
         return (
             <Aux>
-                <Modal show={this.state.purchasing}>
+                <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler} >
                     <OrderSummary ingredients={this.state.ingredients} />
                 </Modal>
                 <Burger ingredients={this.state.ingredients} />

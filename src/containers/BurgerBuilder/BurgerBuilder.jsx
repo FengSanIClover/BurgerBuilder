@@ -23,7 +23,8 @@ class BurgerBuilder extends Component {
             bacon: 0
         },
         totalPrice: 4,
-        purchasable: false
+        purchasable: false,
+        purchasing: false
     }
 
     /** 更新是否可以購買的狀態 
@@ -102,6 +103,11 @@ class BurgerBuilder extends Component {
         this.updatePurchasable(updateIngredient);
     }
 
+    /** 更新狀態為購買中 */
+    purchaseHandler = () => {
+        this.setState({ purchasing: true })
+    }
+
     render() {
         /** 判斷減少各種配料的按鈕是否要 disable */
         const disableInfos = {
@@ -114,7 +120,7 @@ class BurgerBuilder extends Component {
 
         return (
             <Aux>
-                <Modal>
+                <Modal show={this.state.purchasing}>
                     <OrderSummary ingredients={this.state.ingredients} />
                 </Modal>
                 <Burger ingredients={this.state.ingredients} />
@@ -125,6 +131,7 @@ class BurgerBuilder extends Component {
                     // ingredients={this.state.ingredients}
                     price={this.state.totalPrice}
                     purchasable={this.state.purchasable}
+                    order={this.purchaseHandler}
                 />
             </Aux>
         )

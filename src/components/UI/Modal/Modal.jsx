@@ -7,7 +7,7 @@ class Modal extends Component {
 
     // 因不是畫面上即時顯示的介面，不需要一直重新 Render ，在要顯示時再重新 Render 就好
     shouldComponentUpdate(nextProp, nextState) {
-        return nextProp.show !== this.props.show
+        return nextProp.show !== this.props.show || nextProp.children !== this.props.children
     }
 
     // componentWillUpdate() {

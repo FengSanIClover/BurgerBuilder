@@ -6,6 +6,7 @@ import Modal from "../../components/UI/Modal/Modal";
 import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary";
 import axios from "../../axios.order";
 import Spinner from "../../components/UI/Spinner/Spinner";
+import WithErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
 
 /** 全域用得常數命名都為大寫 */
 const INGREDIENT_PRICE = {
@@ -140,15 +141,15 @@ class BurgerBuilder extends Component {
         // 使用 firebase 新增資料庫，網址後要加 .json ，否則會出現 CORS 錯誤 
         // 因為 modal 只有針對 purchasing 狀態改變才重新 render ，因此會看不到 loading 畫面
         // 修改 modal 判斷重新 render 方法，加入 props.children 一起判斷
-        // axios.post("/orders.json", order)
-        //     .then(response => {
-        //         console.log(response)
-        //         this.setState({ loading: false, purchasing: false });
-        //     })
-        //     .catch(error => {
-        //         console.log(error)
-        //         this.setState({ loading: false, purchasing: false });
-        //     })
+        axios.post("/orders.json", order)
+            .then(response => {
+                console.log(response)
+                this.setState({ loading: false, purchasing: false });
+            })
+            .catch(error => {
+                console.log(error)
+                this.setState({ loading: false, purchasing: false });
+            })
     }
 
     render() {
@@ -195,4 +196,4 @@ class BurgerBuilder extends Component {
     }
 }
 
-export default BurgerBuilder;
+export default WithErrorHandler(BurgerBuilder, axios);
